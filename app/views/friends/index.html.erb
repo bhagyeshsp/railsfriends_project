@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+
+<!-- Heading for the page -->
+<h1>Friends</h1>
+
+
+
+<!-- Define a table to hold the friends data -->
+<table class="table table-bordered">
+  <!-- Table header defining the data columns -->
+  <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th>User Id</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  
+  <!-- Table body where each friend's data will be listed -->
+  <tbody>
+    <% @friends.each do |friend| %>
+    <% if friend.user == current_user %>  
+      <tr>        
+        <td><%= link_to friend.first_name + ' ' + friend.last_name, friend %></td>
+        <!-- Display friend's email -->
+        <td><%= friend.email %></td>
+        <!-- Display friend's phone number -->
+        <td><%= friend.phone %></td>
+        <!-- Display friend's Twitter handle -->
+        <td><%= friend.twitter %></td>
+        <td><%= friend.user_id %></td>
+        <!-- Provide links to view and manage the friend -->
+        <td>
+          <%# <%= link_to "Show", friend_path(friend) %>
+          <%# <%= link_to "Edit", edit_friend_path(friend) %>
+          <%= link_to "Delete", friend_path(friend), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %> 
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<!-- Link to add a new friend -->
+<%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
+
+<% else %>
+
+<h3> Pls Sign in to access your friends list. </h3>
+
+<% end %>
