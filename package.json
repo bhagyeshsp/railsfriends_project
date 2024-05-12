@@ -10,12 +10,12 @@
     "webpack-cli": "3.3.12"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-methods": "^7.18.6",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-methods": "^7.24.1",
     "webpack-dev-server": "^5.0.4"
   },
   "license": "MIT",
   "engines": {
-    "node": "16.x"
+    "node": "22.x"
   }
 }
